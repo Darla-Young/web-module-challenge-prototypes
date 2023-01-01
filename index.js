@@ -82,18 +82,23 @@ Car.prototype.drive = function(distance) {
         + Should return a string "Playing with x", x being the favorite toy.
 */
 
-function Baby() {
-
+function Baby(name, age, favoriteToy) {
+  Person.call(this, name, age);
+  this.favoriteToy = favoriteToy;
 }
 
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function() {
+  return `Playing with ${this.favoriteToy}`;
+}
 
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Window binding - if "this" is not pointing to anything, it will return the window/global object
+  2. Implicit binding - "this" points to whatever is left of the dot in the function
+  3. Explicit binding - using call(), apply(), or bind() to dictate what "this" points to
+  4. New binding - when used in a constructor function
 */
 
 ///////// END OF CHALLENGE /////////
